@@ -1,9 +1,12 @@
 var FormView = {
 
   $form: $('form'),
+  $userName: $('.username'),
 
   initialize: function() {
     FormView.$form.on('submit', FormView.handleSubmit);
+    // FormView.$userName.on('click', Friends.toggleStatus);
+    $('body').on('click', '.username', Friends.toggleStatus);
   },
 
   handleSubmit: function(event) {
@@ -11,6 +14,7 @@ var FormView = {
     event.preventDefault();
     Messages.username = App.username;
     Messages.text = $('#message').val();
+    Messages.roomname = $('select').val();
     // console.log($('#message').val(), Messages.text)
     Parse.create(Messages);
     

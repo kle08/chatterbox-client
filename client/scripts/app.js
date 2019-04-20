@@ -13,7 +13,7 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch(App.stopSpinner); //callback to update the data rending MV and RV 
 
   },
 
@@ -22,7 +22,9 @@ var App = {
       // examine the response from the server request:
       console.log(data);
       callback();
-      MessagesView.storage = data.results;
+      App.storage = data.results;
+      MessagesView.render();
+      RoomsView.render();
     });
   },
 

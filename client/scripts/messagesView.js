@@ -6,22 +6,28 @@ var MessagesView = {
   initialize: function() {
     // FormView.$form.on('submit', FormView.handleSubmit);
     // setInterval(() => {MessagesView.render()}, 5000);
+    // setTimeout( () => MessagesView.render(), 200);
+    // debugger;
+    App.fetch();
+
     MessagesView.$refresh.on('click', function() {
-      MessagesView.render();
+      App.fetch();
     });
   },
 
   render: function() {
+    
     // console.log(MessagesView.storage)
     $('#chats').empty();
     var html = '';
-    if (MessagesView.storage) {
-      for (let i = 0; i < MessagesView.storage.length; i++) {
-        if (MessagesView.storage[i].username && MessagesView.storage[i].text) {
-          html += MessageView.render(MessagesView.storage[i]);
+    // console.log(App.storage)
+    if (App.storage) {
+      for (let i = 0; i < App.storage.length; i++) {
+        if (App.storage[i].username && App.storage[i].text && App.storage[i].roomname) {
+          html += MessageView.render(App.storage[i]);
         }
-        $('#chats').append(html);
       }
+      $('#chats').append(html);
     }
     // $.getJSON(Parse.server, function(data) {
     //   for (let i = 0; i < data.results.length; i++) {
@@ -33,8 +39,8 @@ var MessagesView = {
     // });
   },
 
-  renderMessage: function() {
-    MessagesView.render();
+  renderMessage: function(msg) {
+    $('#chats').append(MessageView.render(msg));
   },
 
   
