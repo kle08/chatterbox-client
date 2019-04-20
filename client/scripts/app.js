@@ -21,8 +21,8 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
-      return data;
       callback();
+      MessagesView.storage = data.results;
     });
   },
 
@@ -34,5 +34,6 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+    
   }
 };
