@@ -12,6 +12,13 @@ var RoomsView = {
       var roomName = prompt('New room name:');
       Rooms[roomName] = roomName;
     });
+    RoomsView.$refresh.on('click', function() {
+      for (let key in Rooms){
+        var html = `<option value="${key}">${key}</option>`;
+        $('#rooms select').append(html);
+      }
+      
+    });
   },
 
   render: function() {
