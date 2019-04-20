@@ -13,6 +13,7 @@ var MessagesView = {
 
   render: function() {
     // console.log(MessagesView.storage)
+    $('#chats').empty();
     var html = '';
     if (MessagesView.storage) {
       for (let i = 0; i < MessagesView.storage.length; i++) {

@@ -13,6 +13,7 @@ var RoomsView = {
       Rooms[roomName] = roomName;
     });
     RoomsView.$refresh.on('click', function() {
+      $('#rooms select').empty();
       for (let key in Rooms){
         var html = `<option value="${key}">${key}</option>`;
         $('#rooms select').append(html);
